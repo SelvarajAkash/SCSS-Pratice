@@ -1,0 +1,44 @@
+@function px_to_rem($px) {
+    @return math.div($px, 16) + rem;
+}
+
+@mixin button($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 10px;
+    font-size: px_to_rem(20);
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    transition: 0.2s;
+    &:hover {
+        background-color: darken($bg-color, 10%);
+        transform: scale(1.2);
+    }
+}
+
+.button-primary {
+    @include button(blue, #fff);
+}
+.button-success {
+    @include button(green, #fff);
+}
+.button-danger {
+    @include button(red, #fff);
+}
+
+%extend-border {
+    border: 2px solid green;
+    padding: 20px;
+    color: blue;
+    transition: 0.3s;
+    &:hover {
+        background: #000;
+        border: none;
+        color: #fff;
+    }
+}
+
+.border {
+    @extend %extend-border;
+}

@@ -1,0 +1,92 @@
+// ===================================================Debug Math functions=======================================================
+
+@debug "Math Functions !";
+@debug math.max(12px, 10px, 20px);
+@debug math.sqrt(100);
+@debug math.pow(10, 2);
+@debug math.is-unitless(100);
+@debug math.is-unitless(100rem);
+
+$pow-function: math.pow(2, 2);
+
+@debug math.div(12px, 12px);
+@debug 20px+10px;
+@debug 20px-10px;
+@debug 20px * 10;
+@debug 20/10;
+
+// ==================================================End Debug Math Functions=====================================================
+
+// =================================================Start Maps====================================================================
+
+$colors: (
+    "red": red,
+    "blue": blue,
+    "gray": gray,
+    "yellow": yellow,
+    "white": #fff
+);
+
+@debug map-get($colors, "red");
+@debug map-has-key($colors, "red");
+@debug map-keys($colors);
+@debug map-merge(
+    $colors,
+    (
+        "green": green,
+        "pink": pink
+    )
+);
+@debug map-remove($colors, "pink");
+@debug map-values($colors);
+
+// =================================================End Maps==========================================================================
+
+// =====================================================Common Styles=============================================================
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+
+// ====================================================Common End Styles=========================================================
+
+nav {
+    background-color: black;
+    height: 60px;
+    padding: 10px;
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 10px 0px 10px;
+        &:hover {
+            color: map-get($colors, "red");
+            transition: 0.5s;
+        }
+    }
+}
+
+// ====================================================Mixin Style Start==========================================================
+
+@mixin common-styles {
+    color: green;
+    font-size: 20px;
+}
+
+.heading {
+    @include common-styles;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.para {
+    @include common-styles;
+    text-transform: capitalize;
+    text-indent: 30px;
+    font-weight: bold;
+}
+
+

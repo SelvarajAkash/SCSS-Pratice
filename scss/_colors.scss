@@ -1,0 +1,66 @@
+// ====================================================Using Each and For loop Start===============================================================
+
+$colors: (
+    "success": green,
+    "primary": blue,
+    "danger": red,
+    "info": skyblue,
+    "secondary": gray,
+    "white": white
+);
+
+@each $key, $val in $colors {
+    .text-#{$key} {
+        color: $val;
+    }
+    .bg-#{$key} {
+        background: $val;
+    }
+
+    @for $i from 1 through 3 {
+        .text-#{$key}-light-#{$i} {
+            color: lighten($val, $i * 10);
+        }
+
+        .bg-#{$key}-light-#{$i} {
+            background-color: lighten($val, $i * 10);
+        }
+    }
+
+    @for $i from 1 through 3 {
+        .text-#{$key}-dark-#{$i} {
+            color: darken($val, $i * 10);
+        }
+        .bg-#{$key}-dark-#{$i} {
+            background-color: darken($val, $i * 10);
+        }
+    }
+}
+
+// ==========================================================End Looping============================================================================
+
+// ==========================================================If-else Block===============================================================================
+
+$bg-dark: #222;
+$text-white: #222;
+$width: 300px;
+$height: 299px;
+
+.if-block {
+    padding: 10px;
+    height: $height;
+    width: $width;
+
+    @if ($bg-dark == $text-white) {
+        color: #fff;
+    } @else {
+        color: yellow;
+    }
+    @if ($width >= 300px and $height >= 300px) {
+        background-color: $bg-dark;
+    } @else {
+        background-color: aqua;
+    }
+}
+
+// ==========================================================End If-else Block============================================================================
